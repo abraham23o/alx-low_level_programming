@@ -1,6 +1,7 @@
 #include <stdio.h>
 /*
- * main - entrypoint
+ * main - Entry point
+ * use puts for output
  * should end with zero
  */
 int main(void)
