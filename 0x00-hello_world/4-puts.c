@@ -1,7 +1,6 @@
 #include <stdio.h>
 /*
- * use the function puts
- * not printf
+ * main - entrypoint
  * should end with zero
  */
 int main(void)
