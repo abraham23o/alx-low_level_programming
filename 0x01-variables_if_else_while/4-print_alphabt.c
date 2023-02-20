@@ -3,7 +3,8 @@
 /**
  * main - Entry point
  *
- * Description: 'the program's description'
+ * Description: 'print the alphabet'
+ * in lowercase except e and q
  *
  * Return: Always 0 (Success)
  */
@@ -13,11 +14,11 @@ int main(void)
 
 	for (x = 'a'; x <= 'z'; x++)
 	{
-		if (x != 'e' && x != 'y')
+		if (x != 'e' && x != 'q')
 		{
 			putchar(x);
 		}
-		putchar('\n');
-		return (0);
 	}
+	putchar('\n');
+	return (0);
 }
