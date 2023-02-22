@@ -9,12 +9,12 @@
 int _islower(int c)
 {
 	char x;
-	int y = 0;
+	int islower = 0;
 
 	for (x = 'a'; x <= 'z'; x++)
 	{
 		if (x == c)
-			y = 1;
+			islower = 1;
 	}
-	return (y);
+	return (islower);
 }
