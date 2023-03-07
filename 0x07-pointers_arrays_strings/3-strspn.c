@@ -7,26 +7,22 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	int count = 0, exists;
-	char *x = accept;
+	unsigned int count = 0;
+	int i;
 
 	while (*s)
 	{
-		exists = 0;
-		while (*accept)
+		for (i = 0; accept[i]; i++)
 		{
-			if (*accept == *s)
+			if (*s == accept[i])
 			{
 				count++;
-				exists = 1;
 				break;
 			}
-			accept++;
+			else if (accept[i + 1] == '\0')
+				return (count);
 		}
 		s++;
-		accept = x;
-		if (exists == 0)
-			break;
 	}
 	return (count);
 }
