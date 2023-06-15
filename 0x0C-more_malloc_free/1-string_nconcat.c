@@ -3,7 +3,7 @@
 /**
  * string_nconcat - concatenates 2 strings
  * @s1: string to append to
- * @s1: string which we append from n bytes
+ * @s22: string which we append from n bytes
  * @n: bytes to append
  * Return: pointer to memory which contains string appended
  */
