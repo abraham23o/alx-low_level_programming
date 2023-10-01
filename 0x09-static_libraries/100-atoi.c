@@ -1,10 +1,10 @@
 #include <stdio.h>
 /**
- * myAtoi - convert string to int
+ * _atoi - convert string to int
  * @str: string to be converted
- * Return: value os str type int
+ * Return: value of str type int
  */
-int myAtoi(char *str)
+int _atoi(char *str)
 {
 	int i, res = 0;
 
