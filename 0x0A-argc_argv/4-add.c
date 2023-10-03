@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
+#include <ctype.h>
 
 /**
  * main - Function that adds positive numbers
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 	{
 		if (_num_check(argv[i]))
 		{
-			a_to_i = _atoi(argv[i]);
+			a_to_i = atoi(argv[i]);
 			sum += a_to_i;
 		}
 		else
@@ -33,3 +34,26 @@ int main(int argc, char *argv[])
 	printf("%d\n", sum);
 	return (0);
 }
+
+#include <stdlib.h>
+#include <string.h>
+#include "main.h"
+
+/**
+ * _num_check - check for numbers
+ *@str: string
+ *Return: 0, success
+ */
+int _num_check(char *str)
+{
+	unsigned int i = 0;
+
+	while (i < strlen(str))
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
