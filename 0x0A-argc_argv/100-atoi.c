@@ -6,10 +6,16 @@
  */
 int _atoi(char *str)
 {
-	int i, res = 0;
+	int i = 0, sign = 1, res = 0;
 
-	for (i = 0; str[i] != '\0'; ++i)
-	res = res * 10 + str[i] - '0';
+	if (str[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
 
-	return (res);
+	for (; str[i] != '\0'; ++i)
+		res = res * 10 + str[i] - '0';
+
+	return (sign * res);
 }
