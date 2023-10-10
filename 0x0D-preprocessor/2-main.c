@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define FILENAME __FILE__
+
 /**
  * main - Entry point
  *
