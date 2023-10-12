@@ -19,7 +19,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		str = va_arg(arr_ch, char *);
 
 		if (str == NULL)
-			prinf("(nil)");
+			printf("(nil)");
 		else
 			printf("%s", str);
 
@@ -28,5 +28,5 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	}
 	printf("\n");
 
-	va_end(array_ch);
+	va_end(arr_ch);
 }
