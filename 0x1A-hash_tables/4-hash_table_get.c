@@ -11,7 +11,13 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int slot = 0;
 	hash_node_t *entry = NULL;
 
+	if (ht == NULL || key == NULL || *key = '\0')
+		return (NULL);
+
 	slot = key_index((const unsigned char *)key, ht->size);
+	if (slot >= ht->size)
+		return (NULL);
+
 	entry = ht->array[slot];
 
 	if (entry == NULL)
