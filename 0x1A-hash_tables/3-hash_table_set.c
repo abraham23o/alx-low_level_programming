@@ -9,52 +9,43 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned int slot = key_index((unsigned char *)key, ht->size);
-	hash_node_t *prev;
+	unsigned long int slot = 0, i;
+	char *dup_value = NULL;
+	hash_node_t *entry = NULL;
 
-	hash_node_t *entry = ht->array[slot];
+	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
+		return (0);
 
-	if (entry == NULL)
+	dup_value = strdup(value);
+	if (dup_value == NULL)
+		return (0);
+	slot = key_index((const unsigned char *)key, ht->size);
+	for (i = slot; ht->array[i]; i++)
 	{
-		ht->array[slot] = ht_kvp(key, value);
-		return (1);
-	}
-
-	while (entry != NULL)
-	{
-		if (strcmp(entry->key, key) == 0)
+		if (strcmp(ht->array[i]->key, key) == 0)
 		{
-			free(entry->value);
-			entry->value = malloc(strlen(value) + 1);
-			strcpy(entry->value, value);
+			free(ht->array[i]->value);
+			ht->array[i]->value = dup_value;
 			return (1);
 		}
-		prev = entry;
-		entry = prev->next;
 	}
-	prev->next = ht_kvp(key, value);
-	return (1);
-}
 
-/**
- * ht_kvp - inserts the key-value pair data to the hash table
- * @key: key data
- * @value: value data
- * Return: key-value pair, success
- */
-hash_node_t *ht_kvp(const char *key, const char *value)
-{
-	hash_node_t *entry = malloc(sizeof(hash_node_t));
-
+	entry = malloc(sizeof(hash_node_t));
 	if (entry == NULL)
-		return (NULL);
+	{
+		free(dup_value);
+		return (0);
+	}
 
-	entry->key = malloc(strlen(key) + 1);
-	entry->value = malloc(strlen(value) + 1);
+	entry->key = strdup(key);
+	if (entry->key == NULL)
+	{
+		free(entry);
+		return (0);
+	}
+	entry->value = dup_value;
+	entry->next = ht->array[slot];
+	ht->array[slot] = entry;
 
-	strcpy(entry->key, key);
-	strcpy(entry->value, value);
-
-	entry->next = NULL;
-	return (entry);
+	return (1);
 }
