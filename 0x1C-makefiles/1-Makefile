@@ -1,8 +1,11 @@
 CC = gcc
 SRC = main.c school.c
 
+.PHONY: all school
 all: school
 school:
 	@$(CC) main.c school.c -o school
 	@chmod +x school
 
+clean: 
+	rm school
