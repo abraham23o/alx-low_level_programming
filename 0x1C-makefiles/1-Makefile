@@ -1,0 +1,8 @@
+CC = gcc
+SRC = main.c school.c
+
+all: school
+school:
+	@$(CC) main.c school.c -o school
+	@chmod +x school
+
