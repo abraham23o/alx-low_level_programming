@@ -26,4 +26,4 @@ fclean:
 	clean oclean
 
 re:
-	touch $(SRC)
+	fclean all
