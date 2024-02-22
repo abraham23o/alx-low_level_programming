@@ -1,4 +1,4 @@
-.PHONY: all
+.PHONY: all clean oclean fclean re
 
 
 CC = gcc
@@ -11,19 +11,17 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) -o $(NAME)
+	$(CC) $^ -o $@
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) -c -o $@ $<
 
 clean:
-	$(RM) *~ \#*\# $(NAME) .\#*
+	$(RM) *~ $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
 
-fclean:
-	clean oclean
+fclean: clean oclean
 
-re:
-	touch $(SRC) all
+re: fclean all
